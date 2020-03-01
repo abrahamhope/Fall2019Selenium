@@ -14,25 +14,34 @@ public class BasicNavigation {
         driver.get("http://google.com"); // to open a website
 //        driver.manage().window().maximize();
 
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         String title = driver.getTitle(); // returns <title> Some title</title>
         String expectedTitle="Google";
 
         System.out.println("WebPage Title is: "+title);
-        if(expectedTitle.equals(title)){
-            System.out.println("TEST PASSED!");
-        }else{
-            System.out.println("TEST FAILED!");
-        }
+        verifyEquals(driver.getTitle(),"Google");
+
+//        if(expectedTitle.equals(title)){
+//            System.out.println("TEST PASSED!");
+//        }else{
+//            System.out.println("TEST FAILED!");
+//        }
 
         driver.navigate().to("http://amazon.com");
+        Thread.sleep(3000);
+
         if(driver.getTitle().toLowerCase().contains("amazon")){
             System.out.println("TEST PASSED!");
         }else{
             System.out.println("TEST FAILED!");
         }
-
+        driver.navigate().back();
+        Thread.sleep(3000);
         driver.close(); // to close the driver
+
+        driver.navigate().refresh();
+        Thread.sleep(3000);
+
 
     }
 
