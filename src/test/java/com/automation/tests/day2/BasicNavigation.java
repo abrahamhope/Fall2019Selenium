@@ -12,7 +12,9 @@ public class BasicNavigation {
         ChromeDriver driver = new ChromeDriver();
         // in selenium, everything start from WebDriver
         driver.get("http://google.com"); // to open a website
-        Thread.sleep(3000);
+//        driver.manage().window().maximize();
+
+        Thread.sleep(5000);
         String title = driver.getTitle(); // returns <title> Some title</title>
         String expectedTitle="Google";
 
@@ -23,8 +25,22 @@ public class BasicNavigation {
             System.out.println("TEST FAILED!");
         }
 
+        driver.navigate().to("http://amazon.com");
+        if(driver.getTitle().toLowerCase().contains("amazon")){
+            System.out.println("TEST PASSED!");
+        }else{
+            System.out.println("TEST FAILED!");
+        }
 
         driver.close(); // to close the driver
 
+    }
+
+    public static void verifyEquals(String arg1, String arg2){
+        if(arg1.equals(arg2)){
+            System.out.println("TEST PASSED!");
+        }else{
+            System.out.println("TEST FAILED!");
+        }
     }
 }
