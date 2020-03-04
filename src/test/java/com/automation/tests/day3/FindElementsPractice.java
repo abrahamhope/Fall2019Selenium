@@ -6,6 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 public class FindElementsPractice {
     public static void main(String[] args) throws InterruptedException {
@@ -20,8 +26,16 @@ public class FindElementsPractice {
 
         WebElement signup = driver.findElement(By.name("wooden_spoon"));
         signup.submit();
-
         Thread.sleep(4000);
+
+        WebElement signupMessage = driver.findElement(By.tagName("h3"));
+        if(signupMessage.getText().equalsIgnoreCase("Thank you for signing up. Click the button below to return to the home page.")){
+            System.out.println("PASSED");
+        }else{
+            System.out.println("FAILED");
+        }
+
+
     driver.quit();
     }
 }
