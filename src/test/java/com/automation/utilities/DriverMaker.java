@@ -20,7 +20,8 @@ public class DriverMaker {
     public static WebDriver setupWebDriver(String browserName){
 
         if(browserName.equalsIgnoreCase("chrome")){
-            WebDriverManager.chromedriver().setup();
+            // to fix the time out error message
+            WebDriverManager.chromedriver().version("79.0").setup();
             return new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){
             WebDriverManager.firefoxdriver().setup();
