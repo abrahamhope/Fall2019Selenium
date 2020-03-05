@@ -2,6 +2,7 @@ package com.automation.tests.warmUp;
 
 import com.automation.utilities.DriverMaker;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -11,8 +12,8 @@ public class March4 {
 
     public static void main(String[] args) throws InterruptedException {
 ebayTest();
-//amazonTests();
-wikiTest();
+amazonTests();
+//wikiTest();
 
 
     }
@@ -30,11 +31,17 @@ wikiTest();
     }
 
     public static void amazonTests(){
-
-
+        driver = DriverMaker.setupWebDriver("chrome");
+        driver.get("https://www.amazon.com/");
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("ps4", Keys.ENTER);
+        String title =driver.getTitle();
+        System.out.println(title.contains("ps4"));
+        driver.quit();
     }
 
     public static void wikiTest(){
+        driver = DriverMaker.setupWebDriver("chrome");
+        driver.get("https://www.wikipedia.com/");
 
 
     }
