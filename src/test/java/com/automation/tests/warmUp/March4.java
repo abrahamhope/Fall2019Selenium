@@ -19,7 +19,7 @@ wikiTest();
     }
 
     public static void ebayTest() throws InterruptedException {
-        driver = DriverFactory.setupWebDriver("chrome");
+        driver = DriverFactory.createWebDriver("chrome");
         driver.get("https://www.ebay.com/");
         driver.findElement(By.id("gh-ac")).sendKeys("ps4");
         driver.findElement(By.id("gh-btn")).click();
@@ -31,7 +31,7 @@ wikiTest();
     }
 
     public static void amazonTests(){
-        driver = DriverFactory.setupWebDriver("chrome");
+        driver = DriverFactory.createWebDriver("chrome");
         driver.get("https://www.amazon.com/");
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("ps4", Keys.ENTER);
         String title =driver.getTitle();
@@ -40,7 +40,7 @@ wikiTest();
     }
 
     public static void wikiTest(){
-        driver = DriverFactory.setupWebDriver("chrome");
+        driver = DriverFactory.createWebDriver("chrome");
         driver.get("https://en.wikipedia.org/wiki/Main_Page");
         driver.findElement(By.id("searchInput")).sendKeys("Selenium (software)", Keys.ENTER);
         String link = driver.getCurrentUrl(); // to get link as a String

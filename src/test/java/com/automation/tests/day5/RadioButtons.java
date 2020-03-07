@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RadioButtons {
     public static void main(String[] args) {
-        WebDriver driver = DriverFactory.setupWebDriver("chrome");
+        WebDriver driver = DriverFactory.createWebDriver("chrome");
         driver.get("http://practice.cybertekschool.com/radio_buttons");
         driver.manage().window().maximize();
         BrowserUtils.wait(2);
@@ -32,7 +32,7 @@ public class RadioButtons {
                 BrowserUtils.wait(1);
             }else{
                 System.out.println("Button is disabled, not clicked "+id);
-            }
+            }  System.out.println(id+" is selected? "+isSelected);
         }
 
         driver.quit();

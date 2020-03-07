@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class FindElementsPractice {
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = DriverFactory.setupWebDriver("chrome");
+        WebDriver driver = DriverFactory.createWebDriver("chrome");
 
         driver.get("http://practice.cybertekschool.com/sign_up");
         WebElement fullName =driver.findElement(By.name("full_name"));

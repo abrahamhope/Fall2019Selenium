@@ -17,7 +17,7 @@ public class DriverFactory {
      * @param browserName
      * @return webdriver object
      */
-    public static WebDriver setupWebDriver(String browserName){
+    public static WebDriver createWebDriver(String browserName){
 
         if(browserName.equalsIgnoreCase("chrome")){
             // to fix the time out error message

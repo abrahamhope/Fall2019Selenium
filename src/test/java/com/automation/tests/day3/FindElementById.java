@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class FindElementById {
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = DriverFactory.setupWebDriver("chrome");
+        WebDriver driver = DriverFactory.createWebDriver("chrome");
         driver.get("http://practice.cybertekschool.com/login");
         driver.findElement(By.name("username")).sendKeys("tomsmith");
         Thread.sleep(3000);
