@@ -1,21 +1,13 @@
 package com.automation.tests.day3;
 
-import com.automation.utilities.DriverMaker;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.util.concurrent.TimeUnit;
 
 public class FindElementsPractice {
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = DriverMaker.setupWebDriver("chrome");
+        WebDriver driver = DriverFactory.setupWebDriver("chrome");
 
         driver.get("http://practice.cybertekschool.com/sign_up");
         WebElement fullName =driver.findElement(By.name("full_name"));

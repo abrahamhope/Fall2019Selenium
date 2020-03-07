@@ -1,12 +1,12 @@
 package com.automation.tests.day3;
 
-import com.automation.utilities.DriverMaker;
+import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class FindElementById {
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = DriverMaker.setupWebDriver("chrome");
+        WebDriver driver = DriverFactory.setupWebDriver("chrome");
         driver.get("http://practice.cybertekschool.com/login");
         driver.findElement(By.name("username")).sendKeys("tomsmith");
         Thread.sleep(3000);

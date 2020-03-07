@@ -9,7 +9,7 @@ import org.openqa.selenium.opera.OperaDriver;
 
 
 
-public class DriverMaker {
+public class DriverFactory {
 
     /**
      * This method return webdriver object based on browser type

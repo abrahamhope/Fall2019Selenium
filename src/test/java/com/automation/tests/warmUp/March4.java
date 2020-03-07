@@ -1,6 +1,6 @@
 package com.automation.tests.warmUp;
 
-import com.automation.utilities.DriverMaker;
+import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,13 +13,13 @@ public class March4 {
     public static void main(String[] args) throws InterruptedException {
 ebayTest();
 amazonTests();
-//wikiTest();
+wikiTest();
 
 
     }
 
     public static void ebayTest() throws InterruptedException {
-        driver = DriverMaker.setupWebDriver("chrome");
+        driver = DriverFactory.setupWebDriver("chrome");
         driver.get("https://www.ebay.com/");
         driver.findElement(By.id("gh-ac")).sendKeys("ps4");
         driver.findElement(By.id("gh-btn")).click();
@@ -31,7 +31,7 @@ amazonTests();
     }
 
     public static void amazonTests(){
-        driver = DriverMaker.setupWebDriver("chrome");
+        driver = DriverFactory.setupWebDriver("chrome");
         driver.get("https://www.amazon.com/");
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("ps4", Keys.ENTER);
         String title =driver.getTitle();
@@ -40,8 +40,16 @@ amazonTests();
     }
 
     public static void wikiTest(){
-        driver = DriverMaker.setupWebDriver("chrome");
-        driver.get("https://www.wikipedia.com/");
+        driver = DriverFactory.setupWebDriver("chrome");
+        driver.get("https://en.wikipedia.org/wiki/Main_Page");
+        driver.findElement(By.id("searchInput")).sendKeys("Selenium (software)", Keys.ENTER);
+        String link = driver.getCurrentUrl(); // to get link as a String
+        if(link.endsWith("Selenium_(software)")){
+            System.out.println("TEST PASSED");
+        }else{
+            System.out.println("TEST FAILED");
+        }
+        driver.quit();
 
 
     }
