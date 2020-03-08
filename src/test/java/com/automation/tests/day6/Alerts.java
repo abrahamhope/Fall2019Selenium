@@ -31,7 +31,8 @@ public class Alerts {
             System.out.println("Expected: "+expected);
             System.out.println("Actual: "+actual);
         }
-
+        //##################################
+        //TEST#2
         buttons.get(1).click(); // to click the first button
         BrowserUtils.wait(2);
         driver.switchTo().alert().dismiss(); // accept clicks the OK button
@@ -46,6 +47,26 @@ public class Alerts {
             System.out.println("Expected: "+expected2);
             System.out.println("Actual: "+actual2);
         }
+
+        //################
+        //TEST#3
+        buttons.get(2).click(); // to click the first button
+        BrowserUtils.wait(2);
+        String entry="hello";
+        driver.switchTo().alert().sendKeys(entry);
+        driver.switchTo().alert().accept();
+
+        String expected3= entry;
+        String actual3= driver.findElement(By.id("result")).getText();
+
+        if(actual3.endsWith(expected3)){
+            System.out.println("TEST PASSED");
+        }else{
+            System.out.println("TEST FAILED");
+            System.out.println("Expected: "+expected3);
+            System.out.println("Actual: "+actual3);
+        }
+
 
         BrowserUtils.wait(3);
         driver.quit();
