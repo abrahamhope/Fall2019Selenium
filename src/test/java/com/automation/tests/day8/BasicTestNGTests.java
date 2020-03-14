@@ -1,9 +1,16 @@
 package com.automation.tests.day8;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BasicTestNGTests {
+
+    @BeforeMethod
+    public void setup(){
+
+    }
 
     @Test
     public void tests1(){
