@@ -35,6 +35,24 @@ public class SearchTestss {
 
     }
 
+    @Test(description = "Search for JAVA book on Amazon")
+    public void amazonSearchTest(){
+        driver.get("http://amazon.com");
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("java", Keys.ENTER);
+        driver.manage().window().maximize();
+        BrowserUtils.wait(5);
+
+        List<WebElement> searchItems=driver.findElements(By.xpath("//h2//a"));
+        searchItems.get(0).click();
+        BrowserUtils.wait(5);
+
+        WebElement productTitle = driver.findElement(By.id("title"));
+        String productTitleString = productTitle.getText();
+        System.out.println(productTitleString);
+
+        Assert.assertTrue(productTitleString.contains("Java"));
+    }
+
 
     @BeforeMethod
     public void setup(){
