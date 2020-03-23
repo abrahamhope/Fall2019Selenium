@@ -21,7 +21,7 @@ public class DriverFactory {
 
         if(browserName.equalsIgnoreCase("chrome")){
             // to fix the time out error message
-            WebDriverManager.chromedriver().version("79.0").setup();
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/chromedriver");
             return new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){
             WebDriverManager.firefoxdriver().setup();
