@@ -18,4 +18,14 @@ public class NewLoginTest extends TestBase {
         Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboard");
     }
 
+    /**
+     * Enter
+     */
+    @Test
+    public void verifyWarningMessage(){
+       LoginPage loginPage = new LoginPage();
+       loginPage.login("wrong", "wrong");
+       Assert.assertEquals(loginPage.getWarningMessageText(),"Invalid user name or password.");
+
+    }
 }
