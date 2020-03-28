@@ -2,13 +2,14 @@ package com.automation.tests.vytrack;
 
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class TestBase {
-    // will be visible in the subclass, regardless on subclass location (same package or not)
+public abstract class TestBase {
+    //will be visible in the subclass, regardless on subclass location (same package or no)
     protected WebDriverWait wait;
     protected Actions actions;
 
@@ -19,7 +20,6 @@ public class TestBase {
         Driver.getDriver().manage().window().maximize();
         wait = new WebDriverWait(Driver.getDriver(), 15);
         actions = new Actions(Driver.getDriver());
-
     }
 
 
@@ -27,5 +27,4 @@ public class TestBase {
     public void teardown(){
         Driver.closeDriver();
     }
-
 }
