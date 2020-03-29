@@ -18,6 +18,7 @@ public class BrowserUtils {
             e.printStackTrace();
         }
     }
+
     /**
      *
      * @param elements represents collection of WebElements
@@ -26,10 +27,13 @@ public class BrowserUtils {
     public static List<String> getTextFromWebElements(List<WebElement> elements) {
         List<String> textValues = new ArrayList<>();
         for (WebElement element : elements) {
-            textValues.add(element.getText());
+            if (!element.getText().isEmpty()) {
+                textValues.add(element.getText());
+            }
         }
         return textValues;
     }
+
     /**
      * waits for backgrounds processes on the browser to complete
      *
@@ -53,5 +57,14 @@ public class BrowserUtils {
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
+    /**
+     * Clicks on an element using JavaScript
+     *
+     * @param element
+     */
+    public static void scrollTo(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }
