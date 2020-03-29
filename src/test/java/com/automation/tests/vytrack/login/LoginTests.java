@@ -15,7 +15,7 @@ import java.security.Key;
 
 import static org.testng.Assert.*;
 
-public class LoginPageTests {
+public class LoginTests {
     private WebDriver driver;
     private String URL = "https://qa2.vytrack.com/user/login";
     //credentials for store manager
