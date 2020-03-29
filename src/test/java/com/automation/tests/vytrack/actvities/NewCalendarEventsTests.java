@@ -9,9 +9,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.text.ParseException;
+import java.util.Arrays;
+import java.util.List;
 
 public class NewCalendarEventsTests extends AbstractTestBase {
-
+    LoginPage loginPage = new LoginPage();
+    CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
     /**
      * Test Case :Default options
      *
@@ -19,9 +22,6 @@ public class NewCalendarEventsTests extends AbstractTestBase {
 
     @Test
     public void defaultOptionsTest (){
-        LoginPage loginPage = new LoginPage();
-        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
-
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
 
@@ -32,9 +32,7 @@ public class NewCalendarEventsTests extends AbstractTestBase {
 
     @Test
     public void timeDifferenceTest () throws ParseException {
-        LoginPage loginPage = new LoginPage();
 
-        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
 
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
@@ -45,7 +43,13 @@ public class NewCalendarEventsTests extends AbstractTestBase {
 
         long actual =DateTimeUtilities.getTimeDifference(startTime,endTime,"h:mm a");
         Assert.assertEquals(actual,1);
+    }
 
-
+    @Test
+    public void verifyColumnNamesTest(){
+        loginPage.login();
+        calendarEventsPage.navigateTo("Activities", "Calendar Events");
+        List<String> expected = Arrays.asList("TITLE", "CALENDAR", "START", "END", "RECURRENT", "RECURRENCE", "INVITATION STATUS");
+        Assert.assertEquals(calendarEventsPage.getColumnNames(), expected);
     }
 }
