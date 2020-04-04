@@ -6,6 +6,7 @@ import com.automation.tests.vytrack.AbstractTestBase;
 import com.automation.utilities.DateTimeUtilities;
 import gherkin.lexer.Da;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.text.ParseException;
@@ -51,5 +52,27 @@ public class NewCalendarEventsTests extends AbstractTestBase {
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
         List<String> expected = Arrays.asList("TITLE", "CALENDAR", "START", "END", "RECURRENT", "RECURRENCE", "INVITATION STATUS");
         Assert.assertEquals(calendarEventsPage.getColumnNames(), expected);
+    }
+    @Test(dataProvider = "calendarEvents")
+    public void creaCalendarEventsTask(String title, String description){
+        test = report.createTest("Create calendar event");
+        loginPage.login();
+        calendarEventsPage.navigateTo("Activities", "Calendar Events");
+        calendarEventsPage.clickToCreateCalendarEvent();
+        calendarEventsPage.enterCalendarEventTitle(title);
+        calendarEventsPage.enterCalendarEventDescription(description);
+        calendarEventsPage.clickSaveAndClose();
+
+        Assert.assertEquals(calendarEventsPage.getGeneralInfoDescription(), description);
+        Assert.assertEquals(calendarEventsPage.getGeneralInfoTitle(),title);
+
+        test.pass("Calendar event was created successfully");
+    }
+
+    @DataProvider
+    public Object[][] calendarEvents(){
+        return new Object[][]{
+                {"Daily stand-up", "Scrum meeting to provide updates"}
+        };
     }
 }
