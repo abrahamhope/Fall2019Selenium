@@ -2,12 +2,12 @@
 <suite name="Test suite">
     <test name="Login">
         <classes>
-            <class name="com.automation.tests.vytrack.login.NewLoginTest"></class>
+            <class name="com.automation.tests.vytrack.login.NewLoginTests"/>
         </classes>
-
-        
     </test>
-
-
+    <test name="Calendar events">
+        <classes>
+            <class name="com.automation.tests.vytrack.activities.NewCalendarEventsTests"/>
+        </classes>
+    </test>
 </suite>
-

@@ -24,7 +24,7 @@ public class LoginPage {
     @FindBy(linkText = "Forgot your password?")
     private WebElement forgotPassword;
 
-    @FindBy (css= "[class='alert alert-error']")
+    @FindBy(css = "[class='alert alert-error']")
     private WebElement warningMessage;
 
     public LoginPage() {
@@ -34,19 +34,21 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    public String getWarningMessageText(){
+    public String getWarningMessageText() {
         return warningMessage.getText();
     }
 
     /**
      * Method to login, version #1
      * Login as a specific user
+     *
      * @param usernameValue
      * @param passwordValue
      */
-    public void login(String usernameValue, String passwordValue){
+    public void login(String usernameValue, String passwordValue) {
         username.sendKeys(usernameValue);
         password.sendKeys(passwordValue, Keys.ENTER);
+        BrowserUtils.waitForPageToLoad(10);
         BrowserUtils.wait(3);
     }
 
@@ -55,9 +57,10 @@ public class LoginPage {
      * Login as a default user
      * Credentials will be retrieved from configuration.properties file
      */
-    public void login(){
+    public void login() {
         username.sendKeys(ConfigurationReader.getProperty("store_manager"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
+        BrowserUtils.waitForPageToLoad(10);
         BrowserUtils.wait(3);
     }
 }

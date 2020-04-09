@@ -1,4 +1,4 @@
-package com.automation.tests.vytrack.actvities;
+package com.automation.tests.vytrack.activities;
 //Scenario: Verify for store manager
 //Login as story manager
 //Go to Activities --> Calls
@@ -6,12 +6,10 @@ package com.automation.tests.vytrack.actvities;
 
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -22,7 +20,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class CallsPageTesta {
+public class CallsPageTests {
     private By usernameBy = By.id("prependedInput");
     private By passwordBy = By.id("prependedInput2");
     private WebDriver driver;

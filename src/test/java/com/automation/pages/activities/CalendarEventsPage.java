@@ -10,26 +10,36 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class CalendarEventsPage extends AbstractPageBase {
+
+
     @FindBy(css = "[title='Create Calendar event']")
     private WebElement createCalendarEvent;
+
     @FindBy(className = "select2-chosen")
     private WebElement owner;
+
     @FindBy(css = "[id^='date_selector_oro_calendar_event_form_start']")
     private WebElement startDate;
+
     @FindBy(css = "[id^='time_selector_oro_calendar_event_form_start']")
     private WebElement startTime;
+
     @FindBy(css = "[id^='time_selector_oro_calendar_event_form_end']")
     private WebElement endTime;
+
     @FindBy(className = "grid-header-cell__label")
     private List<WebElement> columnNames;
+
     @FindBy(css = "iframe[id^='oro_calendar_event_form_description-uid']")
     private WebElement descriptionFrame;
+
     @FindBy(css = "[id^='oro_calendar_event_form_title-uid']")
     private WebElement title;
+
     @FindBy(id = "tinymce")
     private WebElement descriptionTextArea;
 
-    @FindBy(css = "[class='btn-group pull-right']>button")
+    @FindBy(css = "[class='btn-group pull-right'] > button")
     private WebElement saveAndClose;
 
     @FindBy(xpath = "(//div[@class='control-label'])[1]")
@@ -44,27 +54,28 @@ public class CalendarEventsPage extends AbstractPageBase {
     }
 
     public void enterCalendarEventDescription(String description) {
+        //wait until frame is available and switch to it
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(descriptionFrame));
         descriptionTextArea.sendKeys(description);
-        driver.switchTo().defaultContent();
+        driver.switchTo().defaultContent();//exit from the frame
     }
 
-    public void clickSaveAndClose() {
-        BrowserUtils.waitForPageToLoad(20);
+    public void clickOnSaveAndClose() {
         wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
     }
 
-    public String getGeneralInfoTitle() {
+    public String getGeneralInfoTitleText() {
         BrowserUtils.waitForPageToLoad(20);
         return generalInfoTitle.getText();
     }
 
-    public String getGeneralInfoDescription() {
+    public String getGeneralInfoDescriptionText() {
+        BrowserUtils.waitForPageToLoad(20);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Description']/following-sibling::div//div")));
         return generalInfoDescription.getText();
     }
 
-//-----------------------------------------------------------------------------
+    //#############################################################
     public List<String> getColumnNames() {
         BrowserUtils.waitForPageToLoad(20);
         return BrowserUtils.getTextFromWebElements(columnNames);

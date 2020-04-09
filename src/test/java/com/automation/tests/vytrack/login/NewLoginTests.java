@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class NewLoginTest extends AbstractTestBase {
+public class NewLoginTests extends AbstractTestBase {
 
     @Test
     public void verifyPageTitle() {

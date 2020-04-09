@@ -1,4 +1,5 @@
 package com.automation.pages;
+
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.By;
@@ -19,18 +20,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public abstract class AbstractPageBase {
     protected WebDriver driver = Driver.getDriver();
-    protected WebDriverWait wait = new WebDriverWait(driver, 15);
+    protected WebDriverWait wait = new WebDriverWait(driver, 25);
 
-    @FindBy (css = "#user-menu > a")
+    @FindBy(css = "#user-menu > a")
     protected WebElement currentUser;
 
-    public AbstractPageBase() { PageFactory.initElements(driver, this); }
+    public AbstractPageBase() {
+        PageFactory.initElements(driver, this);
+    }
 
-    public String getCurrentUserName (){
+
+    public String getCurrentUserName(){
         BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(currentUser));
         return currentUser.getText().trim();
     }
+
 
     /**
      * Method for vytrack navigation. Provide tab name and module name to navigate
@@ -53,7 +58,7 @@ public abstract class AbstractPageBase {
                 click(moduleElement).
                 build().perform();
 
+        //increase this wait rime if still failing
         BrowserUtils.wait(4);
-
     }
 }
