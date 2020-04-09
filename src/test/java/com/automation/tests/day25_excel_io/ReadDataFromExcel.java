@@ -1,5 +1,6 @@
 package com.automation.tests.day25_excel_io;
 
+import com.automation.utilities.ExcelUtil;
 import org.apache.poi.ss.usermodel.*;
 import org.testng.annotations.Test;
 
@@ -37,6 +38,15 @@ public class ReadDataFromExcel {
             }
             System.out.println();
         }
+    }
+
+    @Test
+    public void excelUtilityTest(){
+        String path ="VytrackTestUsers.xlsx";
+        String spreadSheet= "QA1-all";
+        ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
+
+        System.out.println(excelUtil.getDataList());
     }
 
 }
